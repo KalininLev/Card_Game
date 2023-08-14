@@ -66,20 +66,10 @@ button {
 }
 
 .first_page__difficult:hover {
-    outline: 3px solid rgba(0, 128, 193, 1);
+    background-color:rgba(0, 128, 193, 1);
+    color: rgba(255, 255, 255, 1);
 }
 
-.diff-easy:hover{
-    color: rgb(0, 255, 13);
-}
-
-.diff-medium:hover{
-    color: rgb(255, 230, 0);
-}
-
-.diff-hard:hover{
-    color: rgb(255, 30, 0);
-}
 
 .first_page__start-btn {
     margin-top: 67px;
