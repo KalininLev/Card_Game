@@ -1,0 +1,102 @@
+@font-face {
+    font-family: "Skyeng";
+    src: url(../fonts/stratosskyengweb-regular.woff2);
+}
+
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(0, 73, 128, 1);
+    font-family: Skyeng ,sans-serif;
+}
+
+button {
+    cursor: pointer;
+}
+
+.first_page {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.frist_page__nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 480px;
+    background-color: rgba(194, 245, 255, 1);
+    border-radius: 12px;
+    padding: 52px;
+}
+
+.first_page__title {
+    text-align: center;
+    font-size: 40px;
+    color: rgba(0, 73, 128, 1);
+}
+
+.first_page__diff {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+}
+
+.first_page__difficult {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 98px;
+    height: 98px;
+    background-color:rgba(255, 255, 255, 1);
+    border-radius: 12px;
+    cursor: pointer;
+
+    font-family: Skyeng ,sans-serif;
+    font-size: 64px;
+    color:rgba(0, 128, 193, 1);
+    transition:  color 0.2s linear
+}
+
+.first_page__difficult:hover {
+    outline: 3px solid rgba(0, 128, 193, 1);
+}
+
+.diff-easy:hover{
+    color: rgb(0, 255, 13);
+}
+
+.diff-medium:hover{
+    color: rgb(255, 230, 0);
+}
+
+.diff-hard:hover{
+    color: rgb(255, 30, 0);
+}
+
+.first_page__start-btn {
+    margin-top: 67px;
+    width: 246px;
+    height: 48px;
+    outline: none;
+    border: none;
+    border-radius: 12px;
+
+    background-color:rgba(122, 193, 0, 1);
+
+    color: rgba(255, 255, 255, 1);
+    font-family: Skyeng ,sans-serif;
+    font-size: 24px;
+    transition: background 0.2s linear
+}
+
+.first_page__start-btn:hover {
+    background-color: rgb(16, 161, 11);
+}
