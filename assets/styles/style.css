@@ -4,11 +4,11 @@
 }
 
 body {
+    font-family: Skyeng, sans-serif;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     background-color: rgba(0, 73, 128, 1);
-    font-family: Skyeng ,sans-serif;
 }
 
 button {
@@ -39,16 +39,15 @@ button {
     color: rgba(0, 73, 128, 1);
 }
 
-.first_page__diff {
+.first_page__difficulties {
     margin-top: 48px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 24px;
 }
 
-.first_page__difficult {
+.first_page__difficulties-options input[type="radio"] {
+    display: none;
+}
+
+.first_page__difficulties-options label {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,21 +56,32 @@ button {
     height: 98px;
     background-color:rgba(255, 255, 255, 1);
     border-radius: 12px;
-    cursor: pointer;
 
-    font-family: Skyeng ,sans-serif;
+    font-family: Skyeng, sans-serif;
     font-size: 64px;
     color:rgba(0, 128, 193, 1);
-    transition:  color 0.2s linear
+
+    cursor: pointer;
 }
 
-.first_page__difficult:hover {
-    background-color:rgba(0, 128, 193, 1);
-    color: rgba(255, 255, 255, 1);
+.first_page__difficulties-options {
+    display: flex;
+    gap: 24px;
 }
 
+.first_page__difficulties-options input[type="radio"]:checked+label {
+    outline: 3px solid rgba(0, 73, 128, 1);
+}
+
+.first_page__difficulties-options label:hover {
+    outline: 3px solid rgba(0, 73, 128, 1);
+}
 
 .first_page__start-btn {
+    color: rgba(255, 255, 255, 1);
+    font-family: Skyeng ,sans-serif;
+    font-size: 24px;
+
     margin-top: 67px;
     width: 246px;
     height: 48px;
@@ -80,13 +90,8 @@ button {
     border-radius: 12px;
 
     background-color:rgba(122, 193, 0, 1);
-
-    color: rgba(255, 255, 255, 1);
-    font-family: Skyeng ,sans-serif;
-    font-size: 24px;
-    transition: background 0.2s linear
 }
 
 .first_page__start-btn:hover {
-    background-color: rgb(16, 161, 11);
+    background-color: rgb(5, 161, 0);
 }
