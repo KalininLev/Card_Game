@@ -95,3 +95,7 @@ button {
 .first_page__start-btn:hover {
     background-color: rgb(5, 161, 0);
 }
+
+.hidden {
+    display: none;
+}
