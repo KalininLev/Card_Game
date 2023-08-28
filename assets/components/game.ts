@@ -1,11 +1,22 @@
-import { gamePage, startPage } from './app.js';
-import { delay } from './delay.js';
+import { gamePage, losePage, winPage } from './app';
+import { delay } from './delay';
+import { startTimer, stopTimer } from './stopwatch';
 
-const suits = ['hearts', 'clubs', 'diamonds', 'spades'];
-const ranks = ['A', 'K', 'Q', 'J', '10', '9', '8', '7', '6'];
-const cards = [];
+const suits: Array<string> = ['hearts', 'clubs', 'diamonds', 'spades'];
+const ranks: Array<string> = ['A', 'K', 'Q', 'J', '10', '9', '8', '7', '6'];
+const cards: Array<cards> = [];
 
-const randomCards = (suits, ranks, cards) => {
+interface cards {
+    suit: string;
+    rank: string;
+}
+
+interface userSetting {
+    time: string;
+    difficulty: string;
+}
+
+const randomCards = (suits: string[], ranks: string[], cards: Array<cards>) => {
     for (let i = 0; i < cards.length; i++) {
         cards[i] = {
             suit: suits[Math.floor(Math.random() * (3 - 0 + 1))],
@@ -19,7 +30,7 @@ const randomCards = (suits, ranks, cards) => {
     cards.sort(() => Math.random() - 0.5);
 };
 
-const renderFrontCard = (cards) => {
+const renderFrontCard = (cards: Array<cards>) => {
     let cardHtml = '';
     cardHtml = cards
         .map((card) => {
@@ -47,8 +58,8 @@ const renderFrontCard = (cards) => {
     return cardHtml;
 };
 
-export function renderGame(userSetting, gameDeck) {
-    switch (userSetting.difficulty) {
+export function renderGame(obj: userSetting, gameDeck: any) {
+    switch (obj.difficulty) {
         case 'easy':
             cards.length = 3;
             randomCards(suits, ranks, cards);
@@ -73,16 +84,19 @@ export function renderGame(userSetting, gameDeck) {
     }
 
     const playGame = () => {
-        const cardsToCompare = [];
+        const cardsToCompare: Array<any> = [];
         const cardsList = document.querySelectorAll('.card-flip');
         renderFrontCard(cards);
         delay(5000).then(() => {
             flipAllCards(cardsList);
+            startTimer();
             cardsList.forEach((card) => {
                 card.addEventListener('click', () => {
                     flipCard(card);
                     delay(1000).then(() => {
-                        cardsToCompare.push(card.dataset.card);
+                        if (card instanceof HTMLElement) {
+                            cardsToCompare.push(card.dataset.card);
+                        }
 
                         if (cardsToCompare.length % 2 === 0) {
                             if (
@@ -98,14 +112,16 @@ export function renderGame(userSetting, gameDeck) {
                             ) {
                                 console.log();
                             } else {
-                                alert('YOU LOSE!');
-                                startPage.classList.remove('hidden');
+                                // alert('YOU LOSE!');
+                                stopTimer();
+                                losePage.classList.remove('hidden');
                                 gamePage.classList.add('hidden');
                             }
 
                             if (cardsToCompare.length === cards.length) {
-                                alert('YOU WIN!');
-                                startPage.classList.remove('hidden');
+                                // alert('YOU WIN!');
+                                stopTimer();
+                                winPage.classList.remove('hidden');
                                 gamePage.classList.add('hidden');
                             }
                         }
@@ -115,12 +131,12 @@ export function renderGame(userSetting, gameDeck) {
         });
     };
 
-    const flipCard = (cardElement) => {
+    const flipCard = (cardElement: any) => {
         cardElement.classList.toggle('is-flipped');
     };
 
-    const flipAllCards = (cardsElement) => {
-        cardsElement.forEach((card) => {
+    const flipAllCards = (cardsElement: any) => {
+        cardsElement.forEach((card: any) => {
             card.classList.toggle('is-flipped');
         });
     };
