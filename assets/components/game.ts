@@ -58,7 +58,7 @@ const renderFrontCard = (cards: Array<cards>) => {
     return cardHtml;
 };
 
-export function renderGame(obj: userSetting, gameDeck: any) {
+export function renderGame(obj: userSetting, gameDeck: HTMLElement) {
     switch (obj.difficulty) {
         case 'easy':
             cards.length = 3;
@@ -91,52 +91,52 @@ export function renderGame(obj: userSetting, gameDeck: any) {
             flipAllCards(cardsList);
             startTimer();
             cardsList.forEach((card) => {
-                card.addEventListener('click', () => {
-                    flipCard(card);
-                    delay(1000).then(() => {
-                        if (card instanceof HTMLElement) {
+                if (card instanceof HTMLElement) {
+                    card.addEventListener('click', () => {
+                        flipCard(card);
+
+                        delay(1000).then(() => {
                             cardsToCompare.push(card.dataset.card);
-                        }
+                            if (cardsToCompare.length % 2 === 0) {
+                                if (
+                                    cardsToCompare[0] === cardsToCompare[1] &&
+                                    cardsToCompare[2] === cardsToCompare[3] &&
+                                    cardsToCompare[4] === cardsToCompare[5] &&
+                                    cardsToCompare[6] === cardsToCompare[7] &&
+                                    cardsToCompare[8] === cardsToCompare[9] &&
+                                    cardsToCompare[10] === cardsToCompare[11] &&
+                                    cardsToCompare[12] === cardsToCompare[13] &&
+                                    cardsToCompare[14] === cardsToCompare[15] &&
+                                    cardsToCompare[16] === cardsToCompare[17]
+                                ) {
+                                    console.log();
+                                } else {
+                                    // alert('YOU LOSE!');
+                                    stopTimer();
+                                    losePage.classList.remove('hidden');
+                                    gamePage.classList.add('hidden');
+                                }
 
-                        if (cardsToCompare.length % 2 === 0) {
-                            if (
-                                cardsToCompare[0] === cardsToCompare[1] &&
-                                cardsToCompare[2] === cardsToCompare[3] &&
-                                cardsToCompare[4] === cardsToCompare[5] &&
-                                cardsToCompare[6] === cardsToCompare[7] &&
-                                cardsToCompare[8] === cardsToCompare[9] &&
-                                cardsToCompare[10] === cardsToCompare[11] &&
-                                cardsToCompare[12] === cardsToCompare[13] &&
-                                cardsToCompare[14] === cardsToCompare[15] &&
-                                cardsToCompare[16] === cardsToCompare[17]
-                            ) {
-                                console.log();
-                            } else {
-                                // alert('YOU LOSE!');
-                                stopTimer();
-                                losePage.classList.remove('hidden');
-                                gamePage.classList.add('hidden');
+                                if (cardsToCompare.length === cards.length) {
+                                    // alert('YOU WIN!');
+                                    stopTimer();
+                                    winPage.classList.remove('hidden');
+                                    gamePage.classList.add('hidden');
+                                }
                             }
-
-                            if (cardsToCompare.length === cards.length) {
-                                // alert('YOU WIN!');
-                                stopTimer();
-                                winPage.classList.remove('hidden');
-                                gamePage.classList.add('hidden');
-                            }
-                        }
+                        });
                     });
-                });
+                }
             });
         });
     };
 
-    const flipCard = (cardElement: any) => {
+    const flipCard = (cardElement: HTMLElement) => {
         cardElement.classList.toggle('is-flipped');
     };
 
-    const flipAllCards = (cardsElement: any) => {
-        cardsElement.forEach((card: any) => {
+    const flipAllCards = (cardsElement: NodeListOf<Element>) => {
+        cardsElement.forEach((card) => {
             card.classList.toggle('is-flipped');
         });
     };

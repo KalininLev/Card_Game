@@ -2,23 +2,31 @@ import '../styles/style.css';
 import { renderGame } from './game';
 import { resetTimer, stopTimer } from './stopwatch';
 
-const startBtn: any = document.querySelector('.first_page__start-btn');
+const startBtn = document.querySelector(
+    '.first_page__start-btn',
+) as HTMLElement;
 const chooseDiff = document.getElementsByName(
     'difficult',
 ) as NodeListOf<HTMLInputElement>;
-export const startPage: any = document.querySelector('.first_page__nav');
-export const gamePage: any = document.querySelector('.game_page');
-const restartBtn: any = document.querySelector('.game_page__top-restart-btn');
-export const gameDeck: any = document.querySelector('.cards');
-export const winPage: any = document.querySelector('.win');
-export const losePage: any = document.querySelector('.lose');
-const playAgainBtnL: any = document.querySelector('.btn-lose');
-const playAgainBtnW: any = document.querySelector('.btn-win');
-export const timer: any = document.querySelector('.game_page__top-counter');
-export const endTimerL: any = document.querySelector('.timer-lose');
-export const endTimerW: any = document.querySelector('.timer-win');
+export const startPage = document.querySelector(
+    '.first_page__nav',
+) as HTMLElement;
+export const gamePage = document.querySelector('.game_page') as HTMLElement;
+const restartBtn = document.querySelector(
+    '.game_page__top-restart-btn',
+) as HTMLElement;
+export const gameDeck = document.querySelector('.cards') as HTMLElement;
+export const winPage = document.querySelector('.win') as HTMLElement;
+export const losePage = document.querySelector('.lose') as HTMLElement;
+const playAgainBtnL = document.querySelector('.btn-lose') as HTMLElement;
+const playAgainBtnW = document.querySelector('.btn-win') as HTMLElement;
+export const timer = document.querySelector(
+    '.game_page__top-counter',
+) as HTMLElement;
+export const endTimerL = document.querySelector('.timer-lose') as HTMLElement;
+export const endTimerW = document.querySelector('.timer-win') as HTMLElement;
 
-export let userSetting = { time: '', difficulty: '' };
+export const userSetting = { time: '', difficulty: '' };
 
 interface userSetting {
     time: string;
