@@ -1,3 +1,4 @@
+import { randomCards } from '../modules/randomCards';
 import { gamePage, losePage, winPage } from './app';
 import { delay } from './delay';
 import { startTimer, stopTimer } from './stopwatch';
@@ -15,20 +16,6 @@ interface userSetting {
     time: string;
     difficulty: string;
 }
-
-const randomCards = (suits: string[], ranks: string[], cards: Array<cards>) => {
-    for (let i = 0; i < cards.length; i++) {
-        cards[i] = {
-            suit: suits[Math.floor(Math.random() * (3 - 0 + 1))],
-            rank: ranks[Math.floor(Math.random() * (8 - 0 + 1))],
-        };
-    }
-    cards.forEach((element) => {
-        cards.push(element);
-    });
-
-    cards.sort(() => Math.random() - 0.5);
-};
 
 const renderFrontCard = (cards: Array<cards>) => {
     let cardHtml = '';
